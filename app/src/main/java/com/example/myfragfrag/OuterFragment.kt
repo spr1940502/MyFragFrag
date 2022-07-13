@@ -13,16 +13,14 @@ class OuterFragment : Fragment() {
     private lateinit var _binding:FragmentOuterBinding
     private val binding get() = _binding!!
     private var text:String? = null
-    class MyInnerAdapter1(fa: FragmentActivity): FragmentStateAdapter(fa){
-        override fun getItemCount(): Int = 5
-        override fun createFragment(position: Int): Fragment {
-            return InnerFragment.newInstance(  "1 - " + position.toString() )
+    class MyInnerAdapter(fa: FragmentActivity): FragmentStateAdapter(fa){
+        private var sno:String? = null
+        fun setScene(sno:String){
+            this.sno = sno
         }
-    }
-    class MyInnerAdapter2(fa: FragmentActivity): FragmentStateAdapter(fa){
         override fun getItemCount(): Int = 5
         override fun createFragment(position: Int): Fragment {
-            return InnerFragment.newInstance(  "2 - " + position.toString() )
+            return InnerFragment.newInstance(  this.sno + " - " + position.toString() )
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,10 +35,9 @@ class OuterFragment : Fragment() {
     ): View? {
         _binding = FragmentOuterBinding.inflate(inflater,container,false)
         binding.textOuterView.text = text
-        if(text == "0")
-            binding.pager2.adapter = MyInnerAdapter1(this.requireActivity())
-        else
-            binding.pager2.adapter = MyInnerAdapter2(this.requireActivity())
+        var inad = MyInnerAdapter(this.requireActivity())
+        text?.let { inad.setScene(it) }
+        binding.pager2.adapter = inad
         return binding.root
     }
 
