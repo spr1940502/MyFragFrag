@@ -35,7 +35,7 @@ class OuterFragment : Fragment() {
     ): View? {
         _binding = FragmentOuterBinding.inflate(inflater,container,false)
         binding.textOuterView.text = text
-        var inad = MyInnerAdapter(this.requireActivity())
+        val inad = MyInnerAdapter(this.requireActivity())
         text?.let { inad.setScene(it) }
         binding.pager2.adapter = inad
         return binding.root
