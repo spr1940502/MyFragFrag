@@ -7,28 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".OuterFragment" >
 
-    <TextView
-        android:id="@+id/textOuterView"
+    <ImageView
+        android:id="@+id/outerImageView"
         android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintTop_toBottomOf="@+id/content"
+        tools:src="@tools:sample/avatars" />
 
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="409dp"
-        android:layout_height="114dp"
+        android:layout_height="300dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/textOuterView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -36,7 +31,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager2"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="165dp"
             android:layout_marginBottom="540dp" />
     </FrameLayout>
 
@@ -47,7 +42,6 @@
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textOuterView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
